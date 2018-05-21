@@ -1,6 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import NewSynth from './NewSynth';
+import Tone from './Tone';
+import firebase from 'firebase';
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyAKgb0Yho807S4Xp9TvDY3TmALygoJMqXY",
+  authDomain: "newsynthmaker.firebaseapp.com",
+  databaseURL: "https://newsynthmaker.firebaseio.com",
+  projectId: "newsynthmaker",
+  storageBucket: "",
+  messagingSenderId: "1788412398"
+};
+firebase.initializeApp(config);
+
 
 class App extends React.Component {
   constructor() {
@@ -14,7 +28,30 @@ class App extends React.Component {
     this.handleSubmitForSine = this.handleSubmitForSine.bind(this);
     this.handleSubmitForSquare = this.handleSubmitForSquare.bind(this);
     this.handleSubmitForTriangle = this.handleSubmitForTriangle.bind(this);
-    this.triggerNote = this.triggerNote.bind(this);
+    this.triggerNoteC5 = this.triggerNoteC5.bind(this);
+    this.triggerNoteD5 = this.triggerNoteD5.bind(this);
+    this.triggerNoteE5 = this.triggerNoteE5.bind(this);
+    this.triggerNoteF5 = this.triggerNoteF5.bind(this);
+    this.triggerNoteG5 = this.triggerNoteG5.bind(this);
+    this.triggerNoteA5 = this.triggerNoteA5.bind(this);
+    this.triggerNoteB5 = this.triggerNoteB5.bind(this);
+    this.triggerNoteC6 = this.triggerNoteC6.bind(this);
+    
+  }
+  componentDidMount() {
+    const dbRef = firebase.database().ref('types');
+    const synthArray = [];
+    dbRef.on('value', (snapshot)=> {
+      const data = snapshot.val();
+      console.log(data);
+      for(let item in data) {
+        data[item].key = item;
+        synthArray.push(data[item])
+      }
+    })
+    this.setState ({
+      types: synthArray
+    })
   }
   handleChange(e) {
     e.preventDefault();
@@ -43,66 +80,204 @@ class App extends React.Component {
   // }
   handleSubmitForSine(e) {
     e.preventDefault();
-    const typeClone = Array.from(this.state.types);
+    // const typeClone = Array.from(this.state.types);
     const sine = {
       value: this.sineChoice.value
     }
+    const dbRef = firebase.database().ref('types')
 
-    typeClone.push(sine)
+    dbRef.push(sine)
 
     this.setState({
-      type: '',
-      types: typeClone
+      type: ''
     })
   }
   handleSubmitForTriangle(e) {
     e.preventDefault();
-    const typeClone = Array.from(this.state.types);
+    // const typeClone = Array.from(this.state.types);
     const triangle = {
       value: this.triangleChoice.value
     }
+    const dbRef = firebase.database().ref('types')
 
-    typeClone.push(triangle)
+    dbRef.push(triangle)
 
     this.setState({
-      type: '',
-      types: typeClone
+      type: ''
     })
   }
   handleSubmitForSquare(e) {
     e.preventDefault();
-    const typeClone = Array.from(this.state.types);
+    // const typeClone = Array.from(this.state.types);
     const square = {
       value: this.squareChoice.value
     }
+    const dbRef = firebase.database().ref('types')
 
-    typeClone.push(square)
+    dbRef.push(square)
 
     this.setState({
-      type: '',
-      types: typeClone
+      type: ''
     })
   }
   handleSubmitForSawtooth(e) {
     e.preventDefault();
-    const typeClone = Array.from(this.state.types);
+    // const typeClone = Array.from(this.state.types);
 
     const sawtooth = {
       value: this.sawtoothChoice.value
     }
+    const dbRef = firebase.database().ref('types')
 
-    typeClone.push(sawtooth)
+    dbRef.push(sawtooth)
 
     this.setState({
-      type: '',
-      types: typeClone
+      type: ''
     })
   }
-  triggerNote(type) {
-    console.log(type.value);
-    // synth = new Tone.Synth({
-    //   Oscillator
-    // })
+  triggerNoteC5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('C5', '32n').toMaster()
+    
+
+    synth.triggerAttackRelease('C5', '32n').toMaster()
+
+  }
+  triggerNoteD5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+    
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('D5', '32n').toMaster()
+
+    synth.triggerAttackRelease('D5', '32n').toMaster()
+
+  }
+  triggerNoteE5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+    
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('E5', '32n').toMaster()
+
+    synth.triggerAttackRelease('E5', '32n').toMaster()
+
+  }
+  triggerNoteF5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+    
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('F5', '32n').toMaster()
+
+    synth.triggerAttackRelease('F5', '32n').toMaster()
+
+  }
+  triggerNoteG5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+    
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('G5', '32n').toMaster()
+
+    synth.triggerAttackRelease('G5', '32n').toMaster()
+
+  }
+  triggerNoteA5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('A5', '32n').toMaster()
+    
+
+    synth.triggerAttackRelease('A5', '32n').toMaster()
+
+  }
+  triggerNoteB5(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+
+    // const typeChosen = type.value
+
+    // const newTone = new Tone.Synth().Oscillator()
+
+    // newTone.typeChosen.triggerAttackRelease('B5', '32n').toMaster()
+    
+
+    synth.triggerAttackRelease('B5', '32n').toMaster()
+
+  }
+  triggerNoteC6(pickedType) {
+    console.log(pickedType.value);
+    const typeChosen = pickedType.value
+    let synth = new Tone.Synth({
+      Oscillator: {
+        type: typeChosen
+      }
+    })
+
+    // newTone.typeChosen.triggerAttackRelease('C6', '32n').toMaster()
+    
+
+    synth.triggerAttackRelease('C6', '32n').toMaster()
+
   }
   render() {
     return (
@@ -133,13 +308,19 @@ class App extends React.Component {
           <input type="submit" value="Make a Synth!" />
         </form>
         <section className="synths">
-          {this.state.types.map((type, i) => {
-            return (
-              <NewSynth 
-              key={i}
-              type={type}
-              triggerNote={this.triggerNote}/>
-            )
+          {this.state.types.map((typePicked) => {
+            return <NewSynth 
+              key={typePicked.key}
+              pickedType={typePicked.value}
+              triggerNoteC5={this.triggerNoteC5}
+              triggerNoteD5={this.triggerNoteD5}
+              triggerNoteE5={this.triggerNoteE5}
+              triggerNoteF5={this.triggerNoteF5}
+              triggerNoteG5={this.triggerNoteG5}
+              triggerNoteA5={this.triggerNoteA5}
+              triggerNoteB5={this.triggerNoteB5}
+              triggerNoteC6={this.triggerNoteC6}
+              firebaseKey={typePicked.key}/>
           }
 
           )}
