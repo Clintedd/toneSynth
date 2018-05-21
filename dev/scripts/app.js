@@ -98,9 +98,11 @@ class App extends React.Component {
       types: typeClone
     })
   }
-  triggerNote(e) {
-    e.preventDefault();
-    console.log(e)
+  triggerNote(type) {
+    console.log(type.value);
+    // synth = new Tone.Synth({
+    //   Oscillator
+    // })
   }
   render() {
     return (
@@ -135,7 +137,7 @@ class App extends React.Component {
             return (
               <NewSynth 
               key={i}
-              type={NewSynth.type}
+              type={type}
               triggerNote={this.triggerNote}/>
             )
           }
