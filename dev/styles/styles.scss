@@ -10,24 +10,26 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     background-attachment: fixed;
     background-size: cover;
     width: 100vw;
+    padding-top: 30px;
 }
 
 .wrapper {
     max-width: 1920px;
     width: 70%;
     margin: 0 auto;
-    padding-top: 20px;
     
-    .title {
-        // color: #5340BF;
-        font-family: 'Codystar', cursive;
-        text-align: center;
-        font-size: 70px;
-        margin: 0;
-        background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
+}
+
+.title {
+    // color: #5340BF;
+    font-family: 'Codystar', cursive;
+    text-align: center;
+    font-size: 70px;
+    margin: 0;
+    background: linear-gradient(to right, red, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
 }
 
 .forms {
@@ -41,6 +43,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     padding: 15px;
     margin-bottom: 20px;
     font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
 
     
 }
@@ -50,6 +53,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     border-radius: 5px;
     background: #8CD9B6;
     margin: 0 10px;
+    padding: 10px;
 }
 
 .synths {
@@ -119,26 +123,39 @@ footer h5 {
         padding: 3px;
         width: 70%;
         margin: 0 auto;
+        margin-bottom: 20px;
     }
     .form {
         display: flex;
         text-align: center;
         margin: 0 auto;
+        padding: 0 0 0 15px;
     }
     .wrapper {
         width: 50%;
     }
 }
-@media (max-width:986px) {
-    h1.title {
-        font-size: 20px;
+
+@media (max-width: 790px) {
+    .forms {
+        font-size: 14px;
     }
 }
 
-@media (max-width: 710px) {
+@media (max-width: 720px) {
     .checkboxes input[type=checkbox] {
         width: 30px;
         height: 30px;
+    }
+    .main h1.title {
+        font-size: 55px;
+    }
+    .form {
+        flex-direction: column;
+        padding: 0;
+    }
+    .synths {
+        max-height: 47vh;
     }
 }
 
@@ -146,6 +163,23 @@ footer h5 {
     .checkboxes input[type=checkbox] {
         width: 20px;
         height: 20px;
+    }
+    .main h1.title {
+        font-size: 40px;
+        padding-bottom: 30px;
+    } 
+    .synths {
+        max-height: 35vh;
+    }
+}
+
+@media (max-width: 390px) {
+    .checkboxes input[type=checkbox] {
+        width: 15px;
+        height: 15px;
+    }
+    .synths {
+        max-height: 29vh;
     }
 }
 

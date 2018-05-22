@@ -290,17 +290,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="main">
-        {/* <form action="" onSubmit={this.handleSubmit}>
-          <select name="oscillator" id="oscillatorChoice" onChange={this.handleChange}>
-            <option value="sawtooth" onChange={this.handleChangeForSawtooth}  ref={ref => this.sawtoothChoice = ref}>sawtooth</option>
-          </select>
-            <option value="sine" onChange={this.handleChange} ref={ref => this.sineChoice = ref}>sine</option>
-            <option value="triangle" onChange={this.handleChange} ref={ref => this.triangleChoice = ref}>triangle</option>
-            <option value="square" onChange={this.handleChange} ref={ref => this.squareChoice = ref}>square</option>
-          <input type="submit" value="Make a Synth!"/>
-        </form> */}
+        <h1 className="title">SYNTHMAKER</h1>
         <div className="wrapper">
-          <h1 className="title">SynthMaker</h1>
           <div className="forms">
             <div>
               <form className="form" action="" onSubmit={this.handleSubmitForSawtooth}>
