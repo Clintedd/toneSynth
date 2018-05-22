@@ -294,22 +294,33 @@ class App extends React.Component {
         <div className="wrapper">
           <h1 className="title">SynthMaker</h1>
           <div className="forms">
-            <form className="form" action="" onSubmit={this.handleSubmitForSawtooth}>
-              Sawtooth<input type="checkbox" name="oscillator" value="sawtooth" ref={ref => this.sawtoothChoice = ref} />
-              <input type="submit" value="Make a Synth!" />
-            </form>
-            <form className="form" action="" onSubmit={this.handleSubmitForSine}>
-              Sine<input type="checkbox" name="oscillator" value="sine" ref={ref => this.sineChoice = ref} />
-              <input type="submit" value="Make a Synth!" />
-            </form>
-            <form className="form" action="" onSubmit={this.handleSubmitForTriangle}>
-              Triangle<input type="checkbox" name="oscillator" value="triangle" ref={ref => this.triangleChoice = ref} />
-              <input type="submit" value="Make a Synth!" />
-            </form>
-            <form className="form" action="" onSubmit={this.handleSubmitForSquare}>
-              Square<input type="checkbox" name="oscillator" value="square" ref={ref => this.squareChoice = ref} />
-              <input type="submit" value="Make a Synth!" />
-            </form>
+            <div>
+              <form className="form" action="" onSubmit={this.handleSubmitForSawtooth}>
+                SAWTOOTH<input type="checkbox" name="oscillator" value="sawtooth" ref={ref => this.sawtoothChoice = ref} />
+                <input type="submit" value="Make a Synth!" />
+              </form>
+            </div>
+            <div>
+              <form className="form" action="" onSubmit={this.handleSubmitForSine}>
+                SINE<input type="checkbox" name="oscillator" value="sine" ref={ref => this.sineChoice = ref} />
+                <input type="submit" value="Make a Synth!" />
+              </form>
+            </div>
+            <div>
+              <form className="form" action="" onSubmit={this.handleSubmitForTriangle}>
+                TRIANGLE<input type="checkbox" name="oscillator" value="triangle" ref={ref => this.triangleChoice = ref} />
+                <input type="submit" value="Make a Synth!" />
+              </form>
+            </div>
+            <div>
+              <form className="form" action="" onSubmit={this.handleSubmitForSquare}>
+                SQUARE<input type="checkbox" name="oscillator" value="square" ref={ref => this.squareChoice = ref} />
+                <input type="submit" value="Make a Synth!" />
+              </form>
+            </div>
+            
+            
+            
           </div>
           <section className="synths">
             {this.state.types.map((typePicked) => {
