@@ -281,7 +281,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div className="main">
         {/* <form action="" onSubmit={this.handleSubmit}>
           <select name="oscillator" id="oscillatorChoice" onChange={this.handleChange}>
             <option value="sawtooth" onChange={this.handleChangeForSawtooth}  ref={ref => this.sawtoothChoice = ref}>sawtooth</option>
@@ -291,40 +291,44 @@ class App extends React.Component {
             <option value="square" onChange={this.handleChange} ref={ref => this.squareChoice = ref}>square</option>
           <input type="submit" value="Make a Synth!"/>
         </form> */}
-        <form action="" onSubmit={this.handleSubmitForSawtooth}>
-          Sawtooth<input type="radio" name="oscillator" value="sawtooth" onChange={this.onChangeOscillator} ref={ref => this.sawtoothChoice = ref} />
-          <input type="submit" value="Make a Synth!" />
-        </form>
-        <form action="" onSubmit={this.handleSubmitForSine}>
-          Sine<input type="radio" name="oscillator" value="sine" onChange={this.onChangeOscillator} ref={ref => this.sineChoice = ref} />
-          <input type="submit" value="Make a Synth!" />
-        </form>
-        <form action="" onSubmit={this.handleSubmitForTriangle}>
-          Triangle<input type="radio" name="oscillator" value="triangle" onChange={this.onChangeOscillator} ref={ref => this.triangleChoice = ref} />
-          <input type="submit" value="Make a Synth!" />
-        </form>
-        <form action="" onSubmit={this.handleSubmitForSquare}>
-          Square<input type="radio" name="oscillator" value="square" onChange={this.onChangeOscillator} ref={ref => this.squareChoice = ref} />
-          <input type="submit" value="Make a Synth!" />
-        </form>
-        <section className="synths">
-          {this.state.types.map((typePicked) => {
-            return <NewSynth 
-              key={typePicked.key}
-              pickedType={typePicked.value}
-              triggerNoteC5={this.triggerNoteC5}
-              triggerNoteD5={this.triggerNoteD5}
-              triggerNoteE5={this.triggerNoteE5}
-              triggerNoteF5={this.triggerNoteF5}
-              triggerNoteG5={this.triggerNoteG5}
-              triggerNoteA5={this.triggerNoteA5}
-              triggerNoteB5={this.triggerNoteB5}
-              triggerNoteC6={this.triggerNoteC6}
-              firebaseKey={typePicked.key}/>
-          }
+        <div className="wrapper">
+          <div className="forms">
+            <form action="" onSubmit={this.handleSubmitForSawtooth}>
+              Sawtooth<input type="checkbox" name="oscillator" value="sawtooth"  onChange={this.onChangeOscillator} ref={ref => this.sawtoothChoice = ref} />
+              <input type="submit" value="Make a Synth!" />
+            </form>
+            <form action="" onSubmit={this.handleSubmitForSine}>
+              Sine<input type="checkbox" name="oscillator" value="sine" onChange={this.onChangeOscillator} ref={ref => this.sineChoice = ref} />
+              <input type="submit" value="Make a Synth!" />
+            </form>
+            <form action="" onSubmit={this.handleSubmitForTriangle}>
+              Triangle<input type="checkbox" name="oscillator" value="triangle" onChange={this.onChangeOscillator} ref={ref => this.triangleChoice = ref} />
+              <input type="submit" value="Make a Synth!" />
+            </form>
+            <form action="" onSubmit={this.handleSubmitForSquare}>
+              Square<input type="checkbox" name="oscillator" value="square" onChange={this.onChangeOscillator} ref={ref => this.squareChoice = ref} />
+              <input type="submit" value="Make a Synth!" />
+            </form>
+          </div>
+          <section className="synths">
+            {this.state.types.map((typePicked) => {
+              return <NewSynth 
+                key={typePicked.key}
+                pickedType={typePicked.value}
+                triggerNoteC5={this.triggerNoteC5}
+                triggerNoteD5={this.triggerNoteD5}
+                triggerNoteE5={this.triggerNoteE5}
+                triggerNoteF5={this.triggerNoteF5}
+                triggerNoteG5={this.triggerNoteG5}
+                triggerNoteA5={this.triggerNoteA5}
+                triggerNoteB5={this.triggerNoteB5}
+                triggerNoteC6={this.triggerNoteC6}
+                firebaseKey={typePicked.key}/>
+            }
 
-          )}
-        </section>
+            )}
+          </section>
+        </div>
       </div>
     )
   }

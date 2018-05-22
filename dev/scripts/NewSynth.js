@@ -3,7 +3,7 @@ import React from 'react';
 export default function(props) {
     return (
         <div>
-            <div>
+            <div className="checkboxes">
                 <input type="checkbox" id="C5" onChange={() => props.triggerNoteC5(props.pickedType, props.firebaseKey)} />
                 <input type="checkbox" id="C5" onChange={() => props.triggerNoteC5(props.pickedType, props.firebaseKey)} />
                 <input type="checkbox" id="C5" onChange={() => props.triggerNoteC5(props.pickedType, props.firebaseKey)} />
