@@ -36,6 +36,7 @@ class App extends React.Component {
     this.triggerNoteA5 = this.triggerNoteA5.bind(this);
     this.triggerNoteB5 = this.triggerNoteB5.bind(this);
     this.triggerNoteC6 = this.triggerNoteC6.bind(this);
+    this.removeSynth = this.removeSynth.bind(this);
     
   }
   componentDidMount() {
@@ -279,6 +280,13 @@ class App extends React.Component {
     synth.triggerAttackRelease('C6', '32n').toMaster()
 
   }
+  removeSynth(keyToRemove) {
+    const dbRef = firebase.database().ref(keyToRemove.value);
+    console.log(dbRef);
+    // firebase.database().ref(`types/${keyToRemove}`).remove();
+    dbRef.remove();
+
+  }
   render() {
     return (
       <div className="main">
@@ -296,26 +304,26 @@ class App extends React.Component {
           <div className="forms">
             <div>
               <form className="form" action="" onSubmit={this.handleSubmitForSawtooth}>
-                SAWTOOTH<input type="checkbox" name="oscillator" value="sawtooth" ref={ref => this.sawtoothChoice = ref} />
-                <input type="submit" value="Make a Synth!" />
+                Sawtooth<input type="checkbox" name="oscillator" value="sawtooth" ref={ref => this.sawtoothChoice = ref} />
+                <input type="submit" value="Add Synth!" />
               </form>
             </div>
             <div>
               <form className="form" action="" onSubmit={this.handleSubmitForSine}>
-                SINE<input type="checkbox" name="oscillator" value="sine" ref={ref => this.sineChoice = ref} />
-                <input type="submit" value="Make a Synth!" />
+                Sine<input type="checkbox" name="oscillator" value="sine" ref={ref => this.sineChoice = ref} />
+                <input type="submit" value="Add Synth!" />
               </form>
             </div>
             <div>
               <form className="form" action="" onSubmit={this.handleSubmitForTriangle}>
-                TRIANGLE<input type="checkbox" name="oscillator" value="triangle" ref={ref => this.triangleChoice = ref} />
-                <input type="submit" value="Make a Synth!" />
+                Triangle<input type="checkbox" name="oscillator" value="triangle" ref={ref => this.triangleChoice = ref} />
+                <input type="submit" value="Add Synth!" />
               </form>
             </div>
             <div>
               <form className="form" action="" onSubmit={this.handleSubmitForSquare}>
-                SQUARE<input type="checkbox" name="oscillator" value="square" ref={ref => this.squareChoice = ref} />
-                <input type="submit" value="Make a Synth!" />
+                Square<input type="checkbox" name="oscillator" value="square" ref={ref => this.squareChoice = ref} />
+                <input type="submit" value="Add Synth!" />
               </form>
             </div>
             
@@ -325,7 +333,6 @@ class App extends React.Component {
           <section className="synths">
             {this.state.types.map((typePicked) => {
               return <NewSynth 
-                key={typePicked.key}
                 pickedType={typePicked.value}
                 triggerNoteC5={this.triggerNoteC5}
                 triggerNoteD5={this.triggerNoteD5}
@@ -335,6 +342,7 @@ class App extends React.Component {
                 triggerNoteA5={this.triggerNoteA5}
                 triggerNoteB5={this.triggerNoteB5}
                 triggerNoteC6={this.triggerNoteC6}
+                removeSynth={this.removeSynth}
                 firebaseKey={typePicked.key}/>
             }
 

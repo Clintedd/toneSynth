@@ -3,6 +3,7 @@ import React from 'react';
 export default function(props) {
     return (
         <div className="checkboxes">
+            <i className="fas fa-times" onClick={() => props.removeSynth(props.firebaseKey)}></i>
             <div className="checkboxlayer1">
                 <div className="checkboxlayer2">
                     <div>
