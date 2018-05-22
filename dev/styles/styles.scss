@@ -70,10 +70,37 @@ input[type=submit] {
 
 .checkboxes{
     margin: 0 auto;
-    background: grey;
-    border: 10px solid black;
+    background: linear-gradient(to bottom, #D1757E, #D9CD8C , #90DAAF, #98CFDD, #A3AAE0, #B07DD4, #963EBB);
+    border: 6px solid #183749;
     display: flex;
     flex-direction: column-reverse;
+    border-radius: 10px;
+}
+
+@-webkit-keyframes rainbow {
+  0% {border-color: hsl(0, 100%, 69%);}
+  10% {border-color: hsl(65, 100%, 73%);}
+  20% {border-color: hsl(90, 82%, 55%);}
+  30% {border-color: hsl(159, 89%, 78%);}
+  40% {border-color: hsl(198, 89%, 78%);}
+  50% {border-color: hsl(223, 89%, 78%);}
+  60% {border-color: hsl(238, 89%, 78%);}
+  70% {border-color: hsl(282, 89%, 78%);}
+  80% {border-color: hsl(344, 89%, 78%);}
+  90% {border-color: hsl(0, 89%, 78%);}
+  100% {border-color: hsl(349, 100%, 71%);}
+}
+
+.checkboxlayer1 {
+    // border: 3px solid linear-gradient(to bottom, #D1757E, #D9CD8C , #90DAAF, #98CFDD, #A3AAE0, #B07DD4, #963EBB);
+    border: 3px solid black;
+    -webkit-animation: rainbow 3s infinite alternate;
+    border-radius: 8px;
+}
+
+.checkboxlayer2 {
+    border: 6px solid #ABE3C5;
+    border-radius: 6px;
 }
 
 footer h5 {
