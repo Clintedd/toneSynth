@@ -7,7 +7,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 .main {
     background-image: url(../../img/background-image.png);
     height: 100vh;
-    background-attachment: scroll;
+    background-attachment: fixed;
     width: 100vw;
 }
 
@@ -15,7 +15,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     max-width: 1920px;
     width: 50%;
     margin: 0 auto;
-    padding-top: 100px;
+    padding-top: 40px;
 }
 
 .forms {
@@ -29,16 +29,25 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 }
 
 .synths {
-    width: 50%;
+    width: 100%;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    max-height: 75vh;
+    overflow: scroll;
 }
 
-input[type=checkbox] {
-    width: 30px;
-    height: 30px;
+.checkboxes input[type=checkbox] {
+    width: 40px;
+    height: 40px;
 }
 
 .checkboxes{
-    overflow: scroll;
-
+    margin: 0 auto;
+    background: grey;
+    opacity: 0.7;
+    border: 4px solid black;
+    padding: 20px;
+    display: flex;
+    flex-direction: column-reverse;
 }
