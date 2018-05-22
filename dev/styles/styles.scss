@@ -8,6 +8,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     background-image: url(../../img/background-image.png);
     height: 100vh;
     background-attachment: fixed;
+    background-size: cover;
     width: 100vw;
 }
 
@@ -16,17 +17,28 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     width: 50%;
     margin: 0 auto;
     padding-top: 40px;
+    
+    .title {
+        color: white;
+    }
 }
 
 .forms {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     text-align: center;
     background: white;
     opacity: 0.8;
     border-radius: 50px;
-    padding: 30px;
+    padding: 15px;
+
+    .form {
+        border: 2px solid black;
+        margin: 0 10px;
+    }
 }
+
+
 
 .synths {
     width: 100%;
@@ -50,4 +62,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     padding: 20px;
     display: flex;
     flex-direction: column-reverse;
+}
+
+footer h5 {
+    color: white;
 }

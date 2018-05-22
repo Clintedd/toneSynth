@@ -292,20 +292,21 @@ class App extends React.Component {
           <input type="submit" value="Make a Synth!"/>
         </form> */}
         <div className="wrapper">
+          <h1 className="title">SynthMaker</h1>
           <div className="forms">
-            <form action="" onSubmit={this.handleSubmitForSawtooth}>
+            <form className="form" action="" onSubmit={this.handleSubmitForSawtooth}>
               Sawtooth<input type="checkbox" name="oscillator" value="sawtooth" ref={ref => this.sawtoothChoice = ref} />
               <input type="submit" value="Make a Synth!" />
             </form>
-            <form action="" onSubmit={this.handleSubmitForSine}>
+            <form className="form" action="" onSubmit={this.handleSubmitForSine}>
               Sine<input type="checkbox" name="oscillator" value="sine" ref={ref => this.sineChoice = ref} />
               <input type="submit" value="Make a Synth!" />
             </form>
-            <form action="" onSubmit={this.handleSubmitForTriangle}>
+            <form className="form" action="" onSubmit={this.handleSubmitForTriangle}>
               Triangle<input type="checkbox" name="oscillator" value="triangle" ref={ref => this.triangleChoice = ref} />
               <input type="submit" value="Make a Synth!" />
             </form>
-            <form action="" onSubmit={this.handleSubmitForSquare}>
+            <form className="form" action="" onSubmit={this.handleSubmitForSquare}>
               Square<input type="checkbox" name="oscillator" value="square" ref={ref => this.squareChoice = ref} />
               <input type="submit" value="Make a Synth!" />
             </form>
@@ -328,6 +329,9 @@ class App extends React.Component {
 
             )}
           </section>
+          {/* <footer>
+            <h5>CLINT LEE ©</h5>
+          </footer> */}
         </div>
       </div>
     )
