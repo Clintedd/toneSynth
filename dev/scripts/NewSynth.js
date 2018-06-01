@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function(props) {
+export default function (props) {
     return (
         <div className="checkboxes">
             <i className="fas fa-times" onClick={() => props.removeSynth(props.firebaseKey)}></i>

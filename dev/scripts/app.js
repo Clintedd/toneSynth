@@ -37,20 +37,20 @@ class App extends React.Component {
     this.triggerNoteB5 = this.triggerNoteB5.bind(this);
     this.triggerNoteC6 = this.triggerNoteC6.bind(this);
     this.removeSynth = this.removeSynth.bind(this);
-    
+
   }
   componentDidMount() {
     const dbRef = firebase.database().ref('types');
     const synthArray = [];
-    dbRef.on('value', (snapshot)=> {
+    dbRef.on('value', (snapshot) => {
       const data = snapshot.val();
       console.log(data);
-      for(let item in data) {
+      for (let item in data) {
         data[item].key = item;
         synthArray.push(data[item])
       }
     })
-    this.setState ({
+    this.setState({
       types: synthArray
     })
   }
@@ -74,7 +74,7 @@ class App extends React.Component {
   //   }
 
   //   typeClone.push(sawtooth)
-    
+
   //   this.setState({
   //     types: typeClone
   //   })
@@ -137,33 +137,25 @@ class App extends React.Component {
     })
   }
   triggerNoteC5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
 
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
 
     // newTone.typeChosen.triggerAttackRelease('C5', '32n').toMaster()
-    
+
 
     synth.triggerAttackRelease('C5', '32n').toMaster()
 
   }
   triggerNoteD5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
-    
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
+
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
@@ -174,14 +166,10 @@ class App extends React.Component {
 
   }
   triggerNoteE5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
-    
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
+
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
@@ -192,14 +180,10 @@ class App extends React.Component {
 
   }
   triggerNoteF5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
-    
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
+
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
@@ -210,14 +194,10 @@ class App extends React.Component {
 
   }
   triggerNoteG5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
-    
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
+
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
@@ -228,54 +208,42 @@ class App extends React.Component {
 
   }
   triggerNoteA5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
 
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
 
     // newTone.typeChosen.triggerAttackRelease('A5', '32n').toMaster()
-    
+
 
     synth.triggerAttackRelease('A5', '32n').toMaster()
 
   }
   triggerNoteB5(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
 
     // const typeChosen = type.value
 
     // const newTone = new Tone.Synth().Oscillator()
 
     // newTone.typeChosen.triggerAttackRelease('B5', '32n').toMaster()
-    
+
 
     synth.triggerAttackRelease('B5', '32n').toMaster()
 
   }
   triggerNoteC6(pickedType) {
-    console.log(pickedType.value);
-    const typeChosen = pickedType.value
-    let synth = new Tone.Synth({
-      Oscillator: {
-        type: typeChosen
-      }
-    })
+    console.log(pickedType);
+    const typeChosen = pickedType
+    const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
 
     // newTone.typeChosen.triggerAttackRelease('C6', '32n').toMaster()
-    
+
 
     synth.triggerAttackRelease('C6', '32n').toMaster()
 
@@ -317,13 +285,13 @@ class App extends React.Component {
                 <input type="submit" value="Add Synth!" />
               </form>
             </div>
-            
-            
-            
+
+
+
           </div>
           <section className="synths">
             {this.state.types.map((typePicked) => {
-              return <NewSynth 
+              return <NewSynth
                 pickedType={typePicked.value}
                 triggerNoteC5={this.triggerNoteC5}
                 triggerNoteD5={this.triggerNoteD5}
@@ -334,7 +302,7 @@ class App extends React.Component {
                 triggerNoteB5={this.triggerNoteB5}
                 triggerNoteC6={this.triggerNoteC6}
                 removeSynth={this.removeSynth}
-                firebaseKey={typePicked.key}/>
+                firebaseKey={typePicked.key} />
             }
 
             )}
