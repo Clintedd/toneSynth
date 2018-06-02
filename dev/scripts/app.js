@@ -280,7 +280,7 @@ class App extends React.Component {
           <div className="forms">
             <div>
               <form action="">
-                <select name="types" id="">
+                <select name="types" id="" onSubmit={this.handleSubmit}>
                   <option value="sawtooth">Sawtooth</option>
                   <option value="sine">Sine</option>
                   <option value="triangle">Triangle</option>
