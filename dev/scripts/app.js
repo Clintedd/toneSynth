@@ -16,6 +16,8 @@ var config = {
 firebase.initializeApp(config);
 
 
+
+
 class App extends React.Component {
   constructor() {
     super();
@@ -171,21 +173,12 @@ class App extends React.Component {
         <div className="wrapper">
           <div className="forms">
             <div>
-<<<<<<< HEAD
-              <form action="">
-                <select name="types" id="" onSubmit={this.handleSubmit}>
-                  <option value="sawtooth">Sawtooth</option>
-                  <option value="sine">Sine</option>
-                  <option value="triangle">Triangle</option>
-                  <option value="square">Square</option>
-=======
               <form action="" onSubmit={this.handleSubmitType}>
                 <select name="types" id="">
                   <option value="sawtooth" ref={ref => this.typeChoice = ref} >Sawtooth</option>
                   <option value="sine" ref={ref => this.typeChoice = ref}>Sine</option>
                   <option value="triangle" ref={ref => this.typeChoice = ref} >Triangle</option>
                   <option value="square" ref={ref => this.typeChoice = ref}>Square</option>
->>>>>>> 86efe7666915c1c8e84e4bc643b2b27370ef7a34
                 </select>
                 <input type="submit" value="Add Synth!"/>
               </form>
