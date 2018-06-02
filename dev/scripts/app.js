@@ -24,6 +24,7 @@ class App extends React.Component {
       types: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmitType = this.handleSubmitType.bind(this);
     this.handleSubmitForSawtooth = this.handleSubmitForSawtooth.bind(this);
     this.handleSubmitForSine = this.handleSubmitForSine.bind(this);
     this.handleSubmitForSquare = this.handleSubmitForSquare.bind(this);
@@ -45,7 +46,6 @@ class App extends React.Component {
     dbRef.on('value', (snapshot) => {
       const synthArray = [];
       const data = snapshot.val();
-      console.log(data);
       for (let item in data) {
         data[item].key = item;
         synthArray.push(data[item])
@@ -57,14 +57,7 @@ class App extends React.Component {
   }
   handleChange(e) {
     e.preventDefault();
-    console.log('changing');
-    console.log(this);
-
-    // const synth = new Tone.Synth({
-    //   Oscillator: {
-    //     Type: this.
-    //   }
-    // })
+    
 
   }
   // handleChangeForSawtooth(e) {
@@ -80,9 +73,20 @@ class App extends React.Component {
   //     types: typeClone
   //   })
   // }
+
+  handleSubmitType(e) {
+    e.preventDefault();
+    const type = {
+      value: this.typeChoice.value
+    }
+    const dbRef = firebase.database().ref('types')
+
+    dbRef.push(type)
+
+  }
+
   handleSubmitForSine(e) {
     e.preventDefault();
-    // const typeClone = Array.from(this.state.types);
     const sine = {
       value: this.sineChoice.value
     }
@@ -138,7 +142,6 @@ class App extends React.Component {
     })
   }
   triggerNote(pickedType, key) {
-    console.log(pickedType);
     const typeChosen = pickedType
     const synth = new Tone.MonoSynth({ oscillator: { type: typeChosen } })
 
@@ -152,118 +155,7 @@ class App extends React.Component {
     synth.triggerAttackRelease(key, '32n').toMaster()
 
   }
-  // triggerNoteC5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
 
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('C5', '32n').toMaster()
-
-
-  //   synth.triggerAttackRelease('C5', '32n').toMaster()
-
-  // }
-  // triggerNoteD5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('D5', '32n').toMaster()
-
-  //   synth.triggerAttackRelease('D5', '32n').toMaster()
-
-  // }
-  // triggerNoteE5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('E5', '32n').toMaster()
-
-  //   synth.triggerAttackRelease('E5', '32n').toMaster()
-
-  // }
-  // triggerNoteF5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('F5', '32n').toMaster()
-
-  //   synth.triggerAttackRelease('F5', '32n').toMaster()
-
-  // }
-  // triggerNoteG5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('G5', '32n').toMaster()
-
-  //   synth.triggerAttackRelease('G5', '32n').toMaster()
-
-  // }
-  // triggerNoteA5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('A5', '32n').toMaster()
-
-
-  //   synth.triggerAttackRelease('A5', '32n').toMaster()
-
-  // }
-  // triggerNoteB5(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // const typeChosen = type.value
-
-  //   // const newTone = new Tone.Synth().Oscillator()
-
-  //   // newTone.typeChosen.triggerAttackRelease('B5', '32n').toMaster()
-
-
-  //   synth.triggerAttackRelease('B5', '32n').toMaster()
-
-  // }
-  // triggerNoteC6(pickedType) {
-  //   console.log(pickedType);
-  //   const typeChosen = pickedType
-  //   const synth = new Tone.MonoSynth({oscillator: {type: typeChosen}})
-
-  //   // newTone.typeChosen.triggerAttackRelease('C6', '32n').toMaster()
-
-
-  //   synth.triggerAttackRelease('C6', '32n').toMaster()
-
-  // }
   removeSynth(keyToRemove) {
     // const dbRef = firebase.database().ref(keyToRemove.value);
     // console.log(keyToRemove.value);
@@ -279,12 +171,12 @@ class App extends React.Component {
         <div className="wrapper">
           <div className="forms">
             <div>
-              <form action="">
+              <form action="" onSubmit={this.handleSubmitType}>
                 <select name="types" id="">
-                  <option value="sawtooth">Sawtooth</option>
-                  <option value="sine">Sine</option>
-                  <option value="triangle">Triangle</option>
-                  <option value="square">Square</option>
+                  <option value="sawtooth" ref={ref => this.typeChoice = ref} >Sawtooth</option>
+                  <option value="sine" ref={ref => this.typeChoice = ref}>Sine</option>
+                  <option value="triangle" ref={ref => this.typeChoice = ref} >Triangle</option>
+                  <option value="square" ref={ref => this.typeChoice = ref}>Square</option>
                 </select>
                 <input type="submit" value="Add Synth!"/>
               </form>
