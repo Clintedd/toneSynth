@@ -51,8 +51,6 @@ class App extends React.Component {
   }
   handleChange(e) {
     e.preventDefault();
-    
-
   }
 
   handleSubmitType(e) {
