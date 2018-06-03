@@ -20,6 +20,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     
 }
 
+.titleWrapper {
+    width: fit-content;
+    margin: 0 auto;
+}
+
 .title {
     // color: #5340BF;
     font-family: 'Codystar', cursive;

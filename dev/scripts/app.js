@@ -32,14 +32,6 @@ class App extends React.Component {
     this.handleSubmitForSquare = this.handleSubmitForSquare.bind(this);
     this.handleSubmitForTriangle = this.handleSubmitForTriangle.bind(this);
     this.triggerNote = this.triggerNote.bind(this);
-    // this.triggerNoteC5 = this.triggerNoteC5.bind(this);
-    // this.triggerNoteD5 = this.triggerNoteD5.bind(this);
-    // this.triggerNoteE5 = this.triggerNoteE5.bind(this);
-    // this.triggerNoteF5 = this.triggerNoteF5.bind(this);
-    // this.triggerNoteG5 = this.triggerNoteG5.bind(this);
-    // this.triggerNoteA5 = this.triggerNoteA5.bind(this);
-    // this.triggerNoteB5 = this.triggerNoteB5.bind(this);
-    // this.triggerNoteC6 = this.triggerNoteC6.bind(this);
     this.removeSynth = this.removeSynth.bind(this);
 
   }
@@ -62,19 +54,6 @@ class App extends React.Component {
     
 
   }
-  // handleChangeForSawtooth(e) {
-  //   e.preventDefault();
-  //   const typeClone = Array.from(this.state.types);
-  //   const sawtooth = {
-  //     value: this.sawtoothChoice.value
-  //   }
-
-  //   typeClone.push(sawtooth)
-
-  //   this.setState({
-  //     types: typeClone
-  //   })
-  // }
 
   handleSubmitType(e) {
     e.preventDefault();
@@ -102,7 +81,6 @@ class App extends React.Component {
   }
   handleSubmitForTriangle(e) {
     e.preventDefault();
-    // const typeClone = Array.from(this.state.types);
     const triangle = {
       value: this.triangleChoice.value
     }
@@ -116,7 +94,6 @@ class App extends React.Component {
   }
   handleSubmitForSquare(e) {
     e.preventDefault();
-    // const typeClone = Array.from(this.state.types);
     const square = {
       value: this.squareChoice.value
     }
@@ -130,8 +107,6 @@ class App extends React.Component {
   }
   handleSubmitForSawtooth(e) {
     e.preventDefault();
-    // const typeClone = Array.from(this.state.types);
-
     const sawtooth = {
       value: this.sawtoothChoice.value
     }
@@ -146,30 +121,22 @@ class App extends React.Component {
   triggerNote(pickedType, key) {
     const typeChosen = pickedType
     const synth = new Tone.MonoSynth({ oscillator: { type: typeChosen } })
-
-    // const typeChosen = type.value
-
-    // const newTone = new Tone.Synth().Oscillator()
-
-    // newTone.typeChosen.triggerAttackRelease('C5', '32n').toMaster()
-
-
     synth.triggerAttackRelease(key, '32n').toMaster()
 
   }
 
   removeSynth(keyToRemove) {
-    // const dbRef = firebase.database().ref(keyToRemove.value);
-    // console.log(keyToRemove.value);
-    // console.log(dbRef);
     const dbRef = firebase.database().ref(`types/${keyToRemove}`)
     dbRef.remove();
 
   }
+
   render() {
     return (
       <div className="main">
-        <h1 className="title">SYNTHMAKER</h1>
+        <div className="titleWrapper">
+          <h1 className="title">SYNTHMAKER</h1>
+        </div>
         <div className="wrapper">
           <div className="forms">
             <div>
