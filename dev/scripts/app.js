@@ -32,6 +32,8 @@ class App extends React.Component {
     this.handleSubmitForSquare = this.handleSubmitForSquare.bind(this);
     this.handleSubmitForTriangle = this.handleSubmitForTriangle.bind(this);
     this.triggerNote = this.triggerNote.bind(this);
+    this.sequencerStop = this.sequencerStop.bind(this);
+    this.synthSequencer = this.synthSequencer.bind(this);
     this.removeSynth = this.removeSynth.bind(this);
 
   }
@@ -118,9 +120,67 @@ class App extends React.Component {
   }
   triggerNote(pickedType, key) {
     const typeChosen = pickedType
-    const synth = new Tone.MonoSynth({ oscillator: { type: typeChosen } })
+    const synth = new Tone.MonoSynth({ 
+      oscillator: { 
+        type: typeChosen 
+      },
+      filter: {
+        type: 'highpass'
+      } 
+    })
     synth.triggerAttackRelease(key, '32n').toMaster()
 
+  }
+  sequencerStop(e) {
+    e.preventDefault();
+    Tone.Transport.stop();
+  }
+  synthSequencer(pickedType) {
+    const sequencerType = pickedType
+
+    const synths = [
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth(),
+      new Tone.MonoSynth()
+    ]
+
+    synths[0].oscillator.type = sequencerType;
+    synths[1].oscillator.type = sequencerType;
+    synths[2].oscillator.type = sequencerType;
+    synths[3].oscillator.type = sequencerType;
+    synths[4].oscillator.type = sequencerType;
+    synths[5].oscillator.type = sequencerType;
+    synths[6].oscillator.type = sequencerType;
+    synths[7].oscillator.type = sequencerType;
+
+    synths.forEach(synth => synth.toMaster());
+
+    const container = document.querySelector("#sequencer");
+
+    const rows = container.querySelectorAll('div.checkboxlayer2 > div'),
+          notes = ['C5','D5','E5','F5','G5','A5','B5','C6']
+    let index = 0;
+
+    Tone.Transport.scheduleRepeat(repeat, '8n');
+    Tone.Transport.start();
+
+    function repeat(time) {
+      let step = index % 8;
+      for (let i = 0; i < rows.length; i++) {
+        let synth = synths[i],
+            note = notes[i],
+            row = rows[i],
+            input = row.querySelector(`input:nth-child(${step + 1})`);
+        if (input.checked)
+        synth.triggerAttackRelease(note, '8n', time);
+      }
+      index++;
+    }
   }
 
   removeSynth(keyToRemove) {
@@ -178,14 +238,8 @@ class App extends React.Component {
               return <NewSynth
                 pickedType={typePicked.value}
                 triggerNote={this.triggerNote}
-                // triggerNoteC5={this.triggerNoteC5}
-                // triggerNoteD5={this.triggerNoteD5}
-                // triggerNoteE5={this.triggerNoteE5}
-                // triggerNoteF5={this.triggerNoteF5}
-                // triggerNoteG5={this.triggerNoteG5}
-                // triggerNoteA5={this.triggerNoteA5}
-                // triggerNoteB5={this.triggerNoteB5}
-                // triggerNoteC6={this.triggerNoteC6}
+                synthSequencer={this.synthSequencer}
+                sequencerStop={this.sequencerStop}
                 removeSynth={this.removeSynth}
                 firebaseKey={typePicked.key} />
             }

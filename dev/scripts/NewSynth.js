@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewSynth = (props) => {
     return (
-        <div className="checkboxes">
+        <div className="checkboxes" id="sequencer">
             <i className="fas fa-times" onClick={() => props.removeSynth(props.firebaseKey)}></i>
             <div className="checkboxlayer1">
                 <div className="checkboxlayer2">
@@ -87,6 +87,8 @@ const NewSynth = (props) => {
                         <input type="checkbox" id="C6" onChange={() => props.triggerNote(props.pickedType, 'C6')} />
                     </div>
                 </div>
+                <input type="submit" value="PLAY" onClick={() => props.synthSequencer(props.pickedType)} />
+                <input type="submit" value="STOP" onClick={() => props.sequencerStop(e)} />
             </div>
         </div>
     )
