@@ -26,6 +26,7 @@ class App extends React.Component {
       types: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeType = this.handleChangeType.bind(this);
     this.handleSubmitType = this.handleSubmitType.bind(this);
     this.handleSubmitForSawtooth = this.handleSubmitForSawtooth.bind(this);
     this.handleSubmitForSine = this.handleSubmitForSine.bind(this);
@@ -55,14 +56,25 @@ class App extends React.Component {
     e.preventDefault();
   }
 
+  handleChangeType(e) {
+    const type = e.target.value;
+    console.log(type);
+    
+    this.setState({
+      type: type
+    })
+  }
+
   handleSubmitType(e) {
     e.preventDefault();
     const type = {
       value: this.typeChoice.value
     }
+    console.log(type);
     const dbRef = firebase.database().ref('types')
 
     dbRef.push(type)
+
 
   }
 
@@ -133,6 +145,7 @@ class App extends React.Component {
   }
   sequencerStop(e) {
     e.preventDefault();
+    console.log('hi');
     Tone.Transport.stop();
   }
   synthSequencer(pickedType) {
@@ -199,37 +212,13 @@ class App extends React.Component {
           <div className="forms">
             <div>
               <form action="" onSubmit={this.handleSubmitType}>
-                <select name="types" id="">
-                  <option value="sawtooth" ref={ref => this.typeChoice = ref} >Sawtooth</option>
-                  <option value="sine" ref={ref => this.typeChoice = ref}>Sine</option>
-                  <option value="triangle" ref={ref => this.typeChoice = ref} >Triangle</option>
-                  <option value="square" ref={ref => this.typeChoice = ref}>Square</option>
+                <select name="types" id="" ref={ref => this.typeChoice = ref} onChange={this.handleChangeType}>
+                  <option value="sawtooth" >Sawtooth</option>
+                  <option value="sine" >Sine</option>
+                  <option value="triangle" >Triangle</option>
+                  <option value="square" >Square</option>
                 </select>
                 <input type="submit" value="Add Synth!"/>
-              </form>
-            </div>
-            <div>
-              <form className="form" action="" onSubmit={this.handleSubmitForSawtooth}>
-                Sawtooth<input type="checkbox" name="oscillator" value="sawtooth" ref={ref => this.sawtoothChoice = ref} />
-                <input type="submit" value="Add Synth!" />
-              </form>
-            </div>
-            <div>
-              <form className="form" action="" onSubmit={this.handleSubmitForSine}>
-                Sine<input type="checkbox" name="oscillator" value="sine" ref={ref => this.sineChoice = ref} />
-                <input type="submit" value="Add Synth!" />
-              </form>
-            </div>
-            <div>
-              <form className="form" action="" onSubmit={this.handleSubmitForTriangle}>
-                Triangle<input type="checkbox" name="oscillator" value="triangle" ref={ref => this.triangleChoice = ref} />
-                <input type="submit" value="Add Synth!" />
-              </form>
-            </div>
-            <div>
-              <form className="form" action="" onSubmit={this.handleSubmitForSquare}>
-                Square<input type="checkbox" name="oscillator" value="square" ref={ref => this.squareChoice = ref} />
-                <input type="submit" value="Add Synth!" />
               </form>
             </div>
           </div>

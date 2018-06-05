@@ -88,7 +88,7 @@ const NewSynth = (props) => {
                     </div>
                 </div>
                 <input type="submit" value="PLAY" onClick={() => props.synthSequencer(props.pickedType)} />
-                <input type="submit" value="STOP" onClick={() => props.sequencerStop(e)} />
+                <input type="submit" value="STOP" onClick={(e) => props.sequencerStop(e)} />
             </div>
         </div>
     )
