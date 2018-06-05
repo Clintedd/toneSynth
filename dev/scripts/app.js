@@ -179,7 +179,7 @@ class App extends React.Component {
           notes = ['C5','D5','E5','F5','G5','A5','B5','C6']
     let index = 0;
 
-    Tone.Transport.scheduleRepeat(repeat, '8n');
+    Tone.Transport.scheduleRepeat(repeat, '16n');
     Tone.Transport.start();
 
     function repeat(time) {
@@ -190,7 +190,7 @@ class App extends React.Component {
             row = rows[i],
             input = row.querySelector(`input:nth-child(${step + 1})`);
         if (input.checked)
-        synth.triggerAttackRelease(note, '8n', time);
+        synth.triggerAttackRelease(note, '16n', time);
       }
       index++;
     }
@@ -231,8 +231,7 @@ class App extends React.Component {
                 sequencerStop={this.sequencerStop}
                 removeSynth={this.removeSynth}
                 firebaseKey={typePicked.key} />
-            }
-
+              }
             )}
           </section>
           {/* <footer>
