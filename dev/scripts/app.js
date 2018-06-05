@@ -218,6 +218,16 @@ class App extends React.Component {
                   <option value="triangle" >Triangle</option>
                   <option value="square" >Square</option>
                 </select>
+                <select name="filters" id="" ref={ref => this.filterChoice = ref} onChange={this.handleChangeFilter}>
+                  <option value="lowpass">Lowpass</option>
+                  <option value="highpass">Highpass</option>
+                  <option value="bandpass">Bandpass</option>
+                  <option value="lowshelf">Lowshelf</option>
+                  <option value="highshelf">Highshelf</option>
+                  <option value="notch">Notch</option>
+                  <option value="allpass">Allpass</option>
+                  <option value="peaking">Peaking</option>
+                </select>
                 <input type="submit" value="Add Synth!"/>
               </form>
             </div>
