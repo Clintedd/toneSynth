@@ -23,15 +23,13 @@ class App extends React.Component {
     super();
     this.state = {
       type: '',
+      filter: '',
       types: []
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleChangeFilter = this.handleChangeFilter.bind(this);
     this.handleChangeType = this.handleChangeType.bind(this);
     this.handleSubmitType = this.handleSubmitType.bind(this);
-    this.handleSubmitForSawtooth = this.handleSubmitForSawtooth.bind(this);
-    this.handleSubmitForSine = this.handleSubmitForSine.bind(this);
-    this.handleSubmitForSquare = this.handleSubmitForSquare.bind(this);
-    this.handleSubmitForTriangle = this.handleSubmitForTriangle.bind(this);
     this.triggerNote = this.triggerNote.bind(this);
     this.sequencerStop = this.sequencerStop.bind(this);
     this.synthSequencer = this.synthSequencer.bind(this);
@@ -56,6 +54,15 @@ class App extends React.Component {
     e.preventDefault();
   }
 
+  handleChangeFilter(e) {
+    const filter = e.target.value;
+    console.log(filter);
+
+    this.setState({
+      filter: filter
+    })
+  }
+
   handleChangeType(e) {
     const type = e.target.value;
     console.log(type);
@@ -68,76 +75,24 @@ class App extends React.Component {
   handleSubmitType(e) {
     e.preventDefault();
     const type = {
-      value: this.typeChoice.value
+      value: this.typeChoice.value,
+      filter: this.filterChoice.value
     }
     console.log(type);
     const dbRef = firebase.database().ref('types')
 
     dbRef.push(type)
-
-
   }
 
-  handleSubmitForSine(e) {
-    e.preventDefault();
-    const sine = {
-      value: this.sineChoice.value
-    }
-    const dbRef = firebase.database().ref('types')
-
-    dbRef.push(sine)
-
-    this.setState({
-      type: ''
-    })
-  }
-  handleSubmitForTriangle(e) {
-    e.preventDefault();
-    const triangle = {
-      value: this.triangleChoice.value
-    }
-    const dbRef = firebase.database().ref('types')
-
-    dbRef.push(triangle)
-
-    this.setState({
-      type: ''
-    })
-  }
-  handleSubmitForSquare(e) {
-    e.preventDefault();
-    const square = {
-      value: this.squareChoice.value
-    }
-    const dbRef = firebase.database().ref('types')
-
-    dbRef.push(square)
-
-    this.setState({
-      type: ''
-    })
-  }
-  handleSubmitForSawtooth(e) {
-    e.preventDefault();
-    const sawtooth = {
-      value: this.sawtoothChoice.value
-    }
-    const dbRef = firebase.database().ref('types')
-
-    dbRef.push(sawtooth)
-
-    this.setState({
-      type: ''
-    })
-  }
-  triggerNote(pickedType, key) {
+  triggerNote(pickedType, key, pickedFilter) {
     const typeChosen = pickedType
+    const filterChosen = pickedFilter
     const synth = new Tone.MonoSynth({ 
       oscillator: { 
         type: typeChosen 
       },
       filter: {
-        type: 'highpass'
+        type: filterChosen
       } 
     })
     synth.triggerAttackRelease(key, '32n').toMaster()
@@ -148,8 +103,9 @@ class App extends React.Component {
     console.log('hi');
     Tone.Transport.stop();
   }
-  synthSequencer(pickedType) {
+  synthSequencer(pickedType, pickedFilter) {
     const sequencerType = pickedType
+    const sequencerFilter = pickedFilter
 
     const synths = [
       new Tone.MonoSynth(),
@@ -171,6 +127,15 @@ class App extends React.Component {
     synths[6].oscillator.type = sequencerType;
     synths[7].oscillator.type = sequencerType;
 
+    synths[0].filter.type = sequencerFilter;
+    synths[1].filter.type = sequencerFilter;
+    synths[2].filter.type = sequencerFilter;
+    synths[3].filter.type = sequencerFilter;
+    synths[4].filter.type = sequencerFilter;
+    synths[5].filter.type = sequencerFilter;
+    synths[6].filter.type = sequencerFilter;
+    synths[7].filter.type = sequencerFilter;
+
     synths.forEach(synth => synth.toMaster());
 
     const container = document.querySelector("#sequencer");
@@ -179,7 +144,7 @@ class App extends React.Component {
           notes = ['C5','D5','E5','F5','G5','A5','B5','C6']
     let index = 0;
 
-    Tone.Transport.scheduleRepeat(repeat, '16n');
+    Tone.Transport.scheduleRepeat(repeat, '8n');
     Tone.Transport.start();
 
     function repeat(time) {
@@ -190,7 +155,7 @@ class App extends React.Component {
             row = rows[i],
             input = row.querySelector(`input:nth-child(${step + 1})`);
         if (input.checked)
-        synth.triggerAttackRelease(note, '16n', time);
+        synth.triggerAttackRelease(note, '8n', time);
       }
       index++;
     }
@@ -235,6 +200,8 @@ class App extends React.Component {
           <section className="synths">
             {this.state.types.map((typePicked) => {
               return <NewSynth
+                key={typePicked.key}
+                pickedFilter={typePicked.filter}
                 pickedType={typePicked.value}
                 triggerNote={this.triggerNote}
                 synthSequencer={this.synthSequencer}
