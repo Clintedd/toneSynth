@@ -7,7 +7,6 @@ const NewSynth = (props) => {
             <div className="checkboxlayer1">
                 <div className="checkboxlayer2">
                     <div>
-                        
                         <input type="checkbox" id="C5" onChange={() => props.triggerNote(props.pickedType, 'C5', props.pickedFilter)} />
                         <input type="checkbox" id="C5" onChange={() => props.triggerNote(props.pickedType, 'C5', props.pickedFilter)} />
                         <input type="checkbox" id="C5" onChange={() => props.triggerNote(props.pickedType, 'C5', props.pickedFilter)} />

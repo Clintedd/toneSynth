@@ -135,6 +135,7 @@ class App extends React.Component {
     synths[5].filter.type = sequencerFilter;
     synths[6].filter.type = sequencerFilter;
     synths[7].filter.type = sequencerFilter;
+    
 
     synths.forEach(synth => synth.toMaster());
 
@@ -177,22 +178,26 @@ class App extends React.Component {
           <div className="forms">
             <div>
               <form action="" onSubmit={this.handleSubmitType}>
-                <select name="types" id="" ref={ref => this.typeChoice = ref} onChange={this.handleChangeType}>
-                  <option value="sawtooth" >Sawtooth</option>
-                  <option value="sine" >Sine</option>
-                  <option value="triangle" >Triangle</option>
-                  <option value="square" >Square</option>
-                </select>
-                <select name="filters" id="" ref={ref => this.filterChoice = ref} onChange={this.handleChangeFilter}>
-                  <option value="lowpass">Lowpass</option>
-                  <option value="highpass">Highpass</option>
-                  <option value="bandpass">Bandpass</option>
-                  <option value="lowshelf">Lowshelf</option>
-                  <option value="highshelf">Highshelf</option>
-                  <option value="notch">Notch</option>
-                  <option value="allpass">Allpass</option>
-                  <option value="peaking">Peaking</option>
-                </select>
+                <div className="select-style">
+                  <select name="types" id="" ref={ref => this.typeChoice = ref} onChange={this.handleChangeType}>
+                    <option value="sawtooth" >Sawtooth</option>
+                    <option value="sine" >Sine</option>
+                    <option value="triangle" >Triangle</option>
+                    <option value="square" >Square</option>
+                  </select>
+                </div>
+                <div className="select-style">
+                  <select name="filters" id="" ref={ref => this.filterChoice = ref} onChange={this.handleChangeFilter}>
+                    <option value="lowpass">Lowpass</option>
+                    <option value="highpass">Highpass</option>
+                    <option value="bandpass">Bandpass</option>
+                    <option value="lowshelf">Lowshelf</option>
+                    <option value="highshelf">Highshelf</option>
+                    <option value="notch">Notch</option>
+                    <option value="allpass">Allpass</option>
+                    <option value="peaking">Peaking</option>
+                  </select>
+                </div>
                 <input type="submit" value="Add Synth!"/>
               </form>
             </div>
