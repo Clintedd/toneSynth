@@ -17,7 +17,6 @@ firebase.initializeApp(config);
 
 
 
-
 class App extends React.Component {
   constructor() {
     super();
@@ -80,8 +79,11 @@ class App extends React.Component {
     }
     console.log(type);
     const dbRef = firebase.database().ref('types')
+    const dbRefRemove = firebase.database().ref()
 
-    dbRef.push(type)
+    dbRefRemove.remove();
+    dbRef.push(type);
+    console.log(dbRef);
   }
 
   triggerNote(pickedType, key, pickedFilter) {
@@ -101,6 +103,7 @@ class App extends React.Component {
   sequencerStop(e) {
     e.preventDefault();
     console.log('hi');
+    // Tone.Transport.unsync();
     Tone.Transport.stop();
   }
   synthSequencer(pickedType, pickedFilter) {
@@ -159,6 +162,7 @@ class App extends React.Component {
         synth.triggerAttackRelease(note, '8n', time);
       }
       index++;
+      Tone.currentTime = 0;
     }
   }
 
@@ -198,7 +202,7 @@ class App extends React.Component {
                     <option value="peaking">Peaking</option>
                   </select>
                 </div>
-                <input type="submit" value="Add Synth!"/>
+                <input type="submit" value="Play Synth!"/>
               </form>
             </div>
           </div>

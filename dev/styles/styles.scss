@@ -5,7 +5,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 * { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
 .main {
-    background-image: url(../../img/background-image.png);
+    background: url(../../img/background-image.jpg);
     height: 100vh;
     background-attachment: fixed;
     background-size: cover;
@@ -39,6 +39,8 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 .forms {
     display: flex;
+    width: 200px;
+    margin: 0 auto;
     justify-content: space-evenly;
     text-align: center;
     border: 5px solid #2D7886;
@@ -49,8 +51,6 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     margin-bottom: 20px;
     font-family: 'Orbitron', sans-serif;
     font-size: 16px;
-
-    
 }
 
 .form {
@@ -68,7 +68,7 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
     flex-direction: row;
     flex-wrap: wrap;
     max-height: 58vh;
-    overflow: scroll;
+    // overflow: scroll;
 }
 
 input[type=submit] {
@@ -76,8 +76,8 @@ input[type=submit] {
 }
 
 .checkboxes input[type=checkbox] {
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
 }
 
 .checkboxes{
@@ -200,3 +200,42 @@ footer h5 {
     }
 }
 
+input[type=checkbox] {
+    display: none;
+}
+
+.check-button {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 5px;
+    border-radius: 20px;
+}
+
+.check-button-c1 {
+    background: #74BFCE;
+}
+.check-button-d1 {
+    background: #4396A3;
+}
+.check-button-e1 {
+    background: #75BC65;
+}
+.check-button-f1 {
+    background: #BFD045;
+}
+.check-button-g1 {
+    background: #EDCF3B;
+}
+.check-button-a1 {
+    background: #E98830;
+    
+}
+.check-button-b1 {
+    background: #E1659C;
+    
+}
+.check-button-c2 {
+    background: #B960A1;
+    
+}
